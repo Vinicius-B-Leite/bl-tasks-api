@@ -1,65 +1,26 @@
-import React from 'react';
-import { View, FlatList } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, FlatList, ActivityIndicator } from 'react-native';
+import { useQuery } from 'react-query';
 import { useTheme } from 'styled-components/native';
-import { TaskType } from '../../@types/TaskType';
+import { getTasks } from '../../api/getTasks';
 import Task from '../../components/Task';
+import * as S from './style'
 
-// import { Container } from './styles';
 
 
-const data: TaskType[] = [
-    {
-        id: 'ws',
-        description: '1jdsfkjskj',
-        status: 'on hold',
-        titile: 'yfyfy',
-        userID: 'lkjfklsjklçj',
-        created_at: new Date()
-    },
-    {
-        id: 'ws',
-        description: '1jdsfkjskj',
-        status: 'on hold',
-        titile: 'yfyfy',
-        userID: 'lkjfklsjklçj',
-        created_at: new Date()
-    },
-    {
-        id: 'ws',
-        description: '1jdsfkjskj',
-        status: 'on hold',
-        titile: 'yfyfy',
-        userID: 'lkjfklsjklçj',
-        created_at: new Date()
-    },
-    {
-        id: 'ws',
-        description: '1jdsfkjskj',
-        status: 'on hold',
-        titile: 'yfyfy',
-        userID: 'lkjfklsjklçj',
-        created_at: new Date()
-    },
-    {
-        id: 'ws',
-        description: '1jdsfkjskj',
-        status: 'on hold',
-        titile: 'yfyfy',
-        userID: 'lkjfklsjklçj',
-        created_at: new Date()
-    },
-    {
-        id: 'ws',
-        description: '1jdsfkjskj',
-        status: 'on hold',
-        titile: 'yfyfy',
-        userID: 'lkjfklsjklçj',
-        created_at: new Date()
-    },
-]
 const DoTasks: React.FC = () => {
 
-    const { colors } = useTheme()
+    const { colors, icon } = useTheme()
+    const { data, isLoading } = useQuery('taks', () => getTasks({ status: 'on hold', token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZpbmNpdXMgQkwiLCJpYXQiOjE2NzgyMzcxMDEsInN1YiI6IjI2ODk1ZGI4LThlODMtNGM2NC1iNTljLTQzNDJjMDI5YjI4MSJ9.2iuw7US6IPa7n1aOfckTQyVeX6EB8SrQwS5HRVShs6k', userID: 'a2a5bde6-a8a9-4753-882b-dabfebd22b5c' }))
+
+    if (isLoading) {
+        return (
+            <S.Container>
+                <ActivityIndicator size={icon.lg} color={colors.contrast} />
+            </S.Container>
+        )
+    }
+
 
     return (
         <FlatList

@@ -19,6 +19,7 @@ export const theme = {
         sm: width * 0.04,
     },
     icon: {
+        lg: width * 0.1,
         md: width * 0.06
     },
     borderRadius: {
