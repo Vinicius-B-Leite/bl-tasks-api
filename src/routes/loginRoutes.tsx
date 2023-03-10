@@ -10,7 +10,7 @@ import singup from '../screens/singup';
 const Stack = createStackNavigator()
 const LoginRoutes: React.FC = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name='Login' component={login} />
             <Stack.Screen name='Singup' component={singup} />
         </Stack.Navigator>

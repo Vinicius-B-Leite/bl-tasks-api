@@ -10,7 +10,7 @@ import LoginRoutes from './loginRoutes';
 
 const Routes: React.FC = () => {
 
-    const isLogged = true
+    const isLogged = false
     const { colors } = useTheme()
     return (
         <NavigationContainer>

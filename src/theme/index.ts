@@ -14,6 +14,7 @@ export const theme = {
         darkBgOpacity: 'rgba(21, 21, 21, 0.90)'
     },
     fontSize: {
+        lg: width * 0.15,
         md: width * 0.06,
         xsm: width * 0.05,
         sm: width * 0.04,
