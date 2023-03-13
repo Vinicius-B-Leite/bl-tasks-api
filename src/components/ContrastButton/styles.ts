@@ -2,12 +2,12 @@ import styled from 'styled-components/native';
 
 
 
-type Props = { enable: boolean }
+type Props = { enable: boolean, h?: string | number }
 export const Button = styled.TouchableOpacity<Props>`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 9%;
+    height: ${({h}) =>  h || '9%'};
     margin: 3% ;
     padding: 0% 5%;
     border-radius: ${({ theme }) => theme.borderRadius.sm}px;

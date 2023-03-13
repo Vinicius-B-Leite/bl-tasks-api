@@ -5,12 +5,13 @@ import * as S from './styles'
 type Props = {
     children: React.ReactNode,
     onPress: () => void,
-    enable?: boolean
+    enable?: boolean,
+    h?: number | string
 }
 
-const ContrastButton = ({ children, onPress, enable = true }: Props) => {
+const ContrastButton = ({ children, onPress, enable = true, h }: Props) => {
     return (
-        <S.Button onPress={() => enable && onPress()} enable={enable}>
+        <S.Button onPress={() => enable && onPress()} enable={enable} h={h}>
             <S.Label enable={enable}>{children}</S.Label>
         </S.Button>
     )

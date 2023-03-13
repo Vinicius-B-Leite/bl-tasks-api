@@ -6,3 +6,9 @@ export const Container = styled.View`
    justify-content: center;
    align-items: center;
 `;
+
+export const EmptyListAlert = styled.Text`
+   font-weight: 700;
+   color: ${({ theme }) => theme.colors.contrast};
+   font-size: ${({ theme }) => theme.fontSize.xsm}px;
+`

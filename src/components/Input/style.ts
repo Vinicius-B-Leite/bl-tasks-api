@@ -3,7 +3,8 @@ import styled from 'styled-components/native';
 
 type Props = {
     isFocused: boolean,
-    error: boolean
+    error: boolean,
+    h?: number | string
 }
 
 export const InputArea = styled.View<Props>`
@@ -11,13 +12,13 @@ export const InputArea = styled.View<Props>`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 9%;
+    height: ${({ h }) => h || '9%'};
     margin: 3% ;
     padding: 0% 5%;
     border-radius: ${({ theme }) => theme.borderRadius.sm}px;
     background-color: ${({ theme, isFocused, error }) => isFocused ? theme.colors.contrasntOpacity : error ? theme.colors.alertOpacity : theme.colors.darkBg};
     border-width: ${({ isFocused, error }) => isFocused || error ? '1px' : '0px'};
-    border-color: ${({ theme, isFocused, error }) => isFocused ? theme.colors.contrast : error && theme.colors.alert };
+    border-color: ${({ theme, isFocused, error }) => isFocused ? theme.colors.contrast : error && theme.colors.alert};
 `;
 
 

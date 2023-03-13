@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, FlatList, ActivityIndicator } from 'react-native';
 import { useQuery } from 'react-query';
 import { useTheme } from 'styled-components/native';
 import { getTasks } from '../../api/getTasks';
+import CreateTask from '../../components/CreateTask';
 import Task from '../../components/Task';
+import { AuthContext } from '../../contexts/AuthContext';
+import { TaskContext } from '../../contexts/TaskContext';
 import * as S from './styles'
 
 
@@ -11,7 +14,14 @@ import * as S from './styles'
 const DoneStask: React.FC = () => {
 
     const { colors, icon } = useTheme()
-    const { data, isLoading } = useQuery('doneTaks', () => getTasks({ status: 'done', token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZpbmNpdXMgQkwiLCJpYXQiOjE2NzgyMzcxMDEsInN1YiI6IjI2ODk1ZGI4LThlODMtNGM2NC1iNTljLTQzNDJjMDI5YjI4MSJ9.2iuw7US6IPa7n1aOfckTQyVeX6EB8SrQwS5HRVShs6k', userID: 'a2a5bde6-a8a9-4753-882b-dabfebd22b5c' }))
+    const { user } = useContext(AuthContext)
+    const { data, isLoading } = useQuery(
+        ['doneTaks', user],
+        () => user && getTasks({
+            status: 'done',
+            token: 'Bearer ' + user.token,
+            userID: user.id
+        }))
 
     if (isLoading) {
         return (
@@ -23,13 +33,17 @@ const DoneStask: React.FC = () => {
 
 
     return (
-        <FlatList
-            showsVerticalScrollIndicator={false}
-            style={{ flex: 1, backgroundColor: colors.bg }}
-            contentContainerStyle={{ padding: '10%' }}
-            data={data}
-            renderItem={({ item }) => <Task {...item} />}
-        />
+        <S.Container>
+            <FlatList
+                showsVerticalScrollIndicator={false}
+                style={{ flex: 1, backgroundColor: colors.bg }}
+                contentContainerStyle={{ padding: '10%' }}
+                data={data}
+                renderItem={({ item }) => <Task {...item} />}
+                ListEmptyComponent={() => <S.EmptyListAlert>Não há tarefas feitas</S.EmptyListAlert>}
+            />
+        </S.Container>
+
     )
 }
 

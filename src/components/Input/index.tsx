@@ -7,23 +7,24 @@ import { useTheme } from 'styled-components/native';
 
 
 type Props = {
-    iconName: string,
+    iconName?: string,
     inputProps: TextInputProps,
-    error: boolean
+    error: boolean,
+    h?: number | string
 }
-const Input: React.FC<Props> = ({ iconName, inputProps, error }) => {
+const Input: React.FC<Props> = ({ iconName, inputProps, error, h }) => {
 
     const { icon, colors } = useTheme()
     const [isFocused, setIsFocused] = useState(false)
 
 
     return (
-        <S.InputArea error={error} isFocused={isFocused}>
-            <AntDesign
+        <S.InputArea error={error} isFocused={isFocused} h={h}>
+            {iconName && <AntDesign
                 name={iconName}
                 color={colors.text}
                 size={icon.md}
-            />
+            />}
             <S.Input
                 {...inputProps}
                 onFocus={() => setIsFocused(true)}
