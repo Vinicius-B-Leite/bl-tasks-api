@@ -6,7 +6,7 @@ const { width, height } = Dimensions.get('screen')
 
 
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
     background-color: ${({ theme }) => theme.colors.darkBg};
     flex-direction: row;
     margin: ${height * 0.01}px 0px;
