@@ -20,7 +20,7 @@ export async function login({ password, username }: LoginProps) {
 
 
     return api.post<UserType>(
-        'https://tasks-yyo7.onrender.com/login',
+        'login',
         {
             password,
             username

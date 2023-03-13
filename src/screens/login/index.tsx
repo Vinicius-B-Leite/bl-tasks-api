@@ -1,3 +1,4 @@
+import { StackScreenProps } from '@react-navigation/stack';
 import React, { useContext, useState } from 'react';
 import { KeyboardAvoidingView, ActivityIndicator } from 'react-native';
 import { useMutation } from 'react-query';
@@ -8,9 +9,15 @@ import { login } from '../../api/login';
 import ContrastButton from '../../components/ContrastButton';
 import Input from '../../components/Input';
 import { AuthContext } from '../../contexts/AuthContext';
+import { AuthRootParamsList } from '../../routes/AuthModel';
 import * as S from './styles'
 
-const Login: React.FC = () => {
+
+
+
+type Nav = StackScreenProps<AuthRootParamsList, 'Login'>
+
+const Login: React.FC<Nav> = ({ navigation }) => {
 
     const { colors, icon } = useTheme()
     const [username, setUsername] = useState('')
@@ -64,6 +71,10 @@ const Login: React.FC = () => {
                         'ENTRAR'
                 }
                 </ContrastButton>
+
+                <S.SingupBtn onPress={() => navigation.navigate('Singup')}>
+                    <S.SingupTxt>Cadastrar</S.SingupTxt>
+                </S.SingupBtn>
             </S.Container>
 
         </KeyboardAvoidingView>
