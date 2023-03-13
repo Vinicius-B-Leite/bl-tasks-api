@@ -33,16 +33,16 @@ const DoneStask: React.FC = () => {
 
 
     return (
-        <S.Container>
+        <>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 style={{ flex: 1, backgroundColor: colors.bg }}
                 contentContainerStyle={{ padding: '10%' }}
                 data={data}
-                renderItem={({ item }) => <Task {...item} />}
+                renderItem={({ item }) => <Task task={item} onPress={() =>{}} />}
                 ListEmptyComponent={() => <S.EmptyListAlert>Não há tarefas feitas</S.EmptyListAlert>}
             />
-        </S.Container>
+        </>
 
     )
 }

@@ -39,7 +39,7 @@ const DoTasks: React.FC = () => {
 
 
     return (
-        <S.Container>
+        <>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 style={{ flex: 1, backgroundColor: colors.bg }}
@@ -62,7 +62,7 @@ const DoTasks: React.FC = () => {
                     />
                 )
             }
-        </S.Container>
+        </>
 
     )
 }

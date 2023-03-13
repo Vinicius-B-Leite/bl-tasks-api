@@ -13,7 +13,7 @@ type Props  = {
     task: TaskType
 }
 const Task: React.FC<Props> = ({ task, onPress }) => {
-    const { created_at, description, id, status, titile, userID } = task
+    const {  description, id, status, titile } = task
     const { colors, icon } = useTheme()
     const { user } = useContext(AuthContext)
     const queryClient = useQueryClient()

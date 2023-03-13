@@ -1,9 +1,10 @@
+import { TaskStatusType } from "../@types/TaskStatusType"
 import { TaskType } from "../@types/TaskType"
 import { api } from "./api"
 
 type Props = {
     userID: string,
-    status: 'on hold' | 'done',
+    status: TaskStatusType,
     token: string
 }
 export async function getTasks({ status, userID, token }: Props) {
