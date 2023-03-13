@@ -1,22 +1,25 @@
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import Header from '../components/Header';
+import { AuthContext } from '../contexts/AuthContext';
 import AppRoutes from './app';
 import LoginRoutes from './loginRoutes';
 
 // import { Container } from './styles';
 
 const Routes: React.FC = () => {
-
-    const isLogged = false
     const { colors } = useTheme()
+    const { user } = useContext(AuthContext)
+
+
+
     return (
         <NavigationContainer>
             <StatusBar backgroundColor={colors.darkBg} barStyle='light-content' />
             {
-                isLogged ? (<>
+                user ? (<>
                     <Header />
                     <AppRoutes />
                 </>) : <LoginRoutes />

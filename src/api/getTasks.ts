@@ -7,18 +7,13 @@ type Props = {
     token: string
 }
 export async function getTasks({ status, userID, token }: Props) {
-    try {
-        const { data } = await api.get(
-            `tasks/${userID}?status=${status}`,
-            {
-                headers: {
-                    'Authorization': token
-                }
-            })
+    const { data } = await api.get(
+        `tasks/${userID}?status=${status}`,
+        {
+            headers: {
+                'Authorization': token
+            }
+        })
 
-        return data as TaskType[]
-    } catch (error) {
-        console.log(error);
-
-    }
+    return data as TaskType[]
 }

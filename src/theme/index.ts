@@ -7,11 +7,14 @@ const { height, width } = Dimensions.get('screen')
 export const theme = {
     colors: {
         text: '#fff',
+        darkText: '#616161',
         contrast: '#44d2ff',
         contrasntOpacity: 'rgba(68, 210, 255, 0.20)',
         bg: '#232323',
         darkBg: '#151515',
-        darkBgOpacity: 'rgba(21, 21, 21, 0.90)'
+        darkBgOpacity: 'rgba(21, 21, 21, 0.90)',
+        alert: '#FF0000',
+        alertOpacity: 'rgba(255, 75, 75, 0.30)'
     },
     fontSize: {
         lg: width * 0.15,

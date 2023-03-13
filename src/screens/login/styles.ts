@@ -11,16 +11,23 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
     font-weight: 700;
-    color: ${({theme}) => theme.colors.text};
-    font-size: ${({theme}) => theme.fontSize.lg}px;
+    color: ${({ theme }) => theme.colors.text};
+    font-size: ${({ theme }) => theme.fontSize.lg}px;
 `
 export const ContrastTitle = styled(Title)`
-    color: ${({theme}) => theme.colors.contrast};
+    color: ${({ theme }) => theme.colors.contrast};
 `
 export const SubTitle = styled.Text`
     font-weight: 400;
-    color: ${({theme}) => theme.colors.text};
-    font-size: ${({theme}) => theme.fontSize.md}px;
+    color: ${({ theme }) => theme.colors.text};
+    font-size: ${({ theme }) => theme.fontSize.md}px;
     margin-bottom: 10%;
 `
 
+export const ErrorMessage = styled.Text`
+    font-weight: 400;
+    color: ${({ theme }) => theme.colors.alert};
+    font-size: ${({ theme }) => theme.fontSize.sm}px;
+    align-self: flex-start;
+    margin: 0% 0% 2% 4%;
+`

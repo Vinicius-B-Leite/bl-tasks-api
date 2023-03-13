@@ -1,11 +1,17 @@
 import React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacityProps } from 'react-native';
 import * as S from './styles'
 
-const ContrastButton = ({ children }: { children: React.ReactNode }) => {
+type Props = {
+    children: React.ReactNode,
+    onPress: () => void,
+    enable?: boolean
+}
+
+const ContrastButton = ({ children, onPress, enable = true }: Props) => {
     return (
-        <S.Button>
-            <S.Label>{children}</S.Label>
+        <S.Button onPress={() => enable && onPress()} enable={enable}>
+            <S.Label enable={enable}>{children}</S.Label>
         </S.Button>
     )
 }
