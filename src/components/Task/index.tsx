@@ -8,9 +8,12 @@ import { useMutation, useQueryClient } from 'react-query';
 import { deleteTask } from '../../api/deleteTask';
 import { AuthContext } from '../../contexts/AuthContext';
 
-
-const Task: React.FC<TaskType> = ({ titile, description, status, id, created_at, userID }) => {
-
+type Props  = {
+    onPress: (task: TaskType) => void,
+    task: TaskType
+}
+const Task: React.FC<Props> = ({ task, onPress }) => {
+    const { created_at, description, id, status, titile, userID } = task
     const { colors, icon } = useTheme()
     const { user } = useContext(AuthContext)
     const queryClient = useQueryClient()
@@ -38,7 +41,7 @@ const Task: React.FC<TaskType> = ({ titile, description, status, id, created_at,
         )
     }
     return (
-        <S.Container onLongPress={handleDelete}>
+        <S.Container onLongPress={handleDelete} onPress={() => onPress(task)}>
             <S.Left>
                 <S.Title numberOfLines={1}>{titile}</S.Title>
                 <S.Description numberOfLines={1}>{description}</S.Description>
